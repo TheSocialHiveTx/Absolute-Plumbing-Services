@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Absolute Plumbing Services | Emergency Plumber Deer Park, TX</title>
+    <meta name="description" content="Fast, reliable plumbing repairs in Deer Park, TX. Emergency leak detection, water heater repair, and pipe replacement. Fair pricing. Call (832) 429-3801 today.">
+    
+    <!-- Scripts & Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .glass-effect { backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.85); }
@@ -27,19 +32,512 @@
 
         .skewed-divider { clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%); }
         .gradient-text { background: linear-gradient(90deg, #2563eb, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Accordion transition */
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 200px; }
+        .faq-item.active .chevron { transform: rotate(180deg); }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
-  }
-}
-</script>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
-    <div id="root"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2 rounded-xl shadow-lg shadow-blue-500/20">
+                    <i data-lucide="wrench" class="text-white w-5 h-5"></i>
+                </div>
+                <span id="logo-text" class="font-extrabold text-xl tracking-tighter text-white">
+                    ABSOLUTE <span class="text-blue-600">PLUMBING</span>
+                </span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="nav-link font-bold text-sm uppercase tracking-widest text-white/80 hover:text-white transition-colors">Services</a>
+                <a href="#why-us" class="nav-link font-bold text-sm uppercase tracking-widest text-white/80 hover:text-white transition-colors">Why Us</a>
+                <a href="#faq" class="nav-link font-bold text-sm uppercase tracking-widest text-white/80 hover:text-white transition-colors">FAQ</a>
+                <a href="tel:8324293801" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/30 animate-pulse-blue">
+                    <i data-lucide="phone" class="w-4 h-4 fill-current"></i> (832) 429-3801
+                </a>
+            </div>
+
+            <a href="tel:8324293801" class="md:hidden bg-blue-600 text-white p-2.5 rounded-xl shadow-lg shadow-blue-600/30 animate-pulse-blue">
+                <i data-lucide="phone" class="w-5 h-5 fill-current"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative min-h-[90vh] flex items-center pt-32 pb-20 bg-slate-950 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-40">
+            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1920" alt="Plumbing Craft" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/70 to-slate-950 z-10"></div>
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-blue-600/20 border border-blue-500/30 text-blue-400 px-4 py-2 rounded-full mb-8 font-bold text-xs uppercase tracking-widest backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    Dispatcher Active: Technician in Deer Park Now
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight">
+                    Reliable Plumbing <br/>
+                    <span class="gradient-text">When You Need It Most</span>
+                </h1>
+                
+                <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    The expert choice for Deer Park homeowners. Fast emergency repairs, transparent pricing, and 5-star professional service.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+                    <a href="tel:8324293801" class="bg-blue-600 hover:bg-blue-500 text-white text-2xl px-10 py-6 rounded-2xl font-black shadow-2xl shadow-blue-600/40 flex items-center justify-center gap-3 transform hover:-translate-y-1 transition-all animate-pulse-blue">
+                        <i data-lucide="phone" class="w-7 h-7 fill-current"></i> CALL NOW
+                    </a>
+                    <div class="flex items-center gap-4 bg-white/5 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
+                        <div class="flex -space-x-2">
+                            <img src="https://i.pravatar.cc/100?img=11" class="w-8 h-8 rounded-full border-2 border-slate-900" alt="User">
+                            <img src="https://i.pravatar.cc/100?img=12" class="w-8 h-8 rounded-full border-2 border-slate-900" alt="User">
+                            <img src="https://i.pravatar.cc/100?img=13" class="w-8 h-8 rounded-full border-2 border-slate-900" alt="User">
+                        </div>
+                        <div>
+                            <div class="flex text-yellow-400">
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            </div>
+                            <p class="text-white text-xs font-bold mt-1">40+ Local Google Reviews</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 hidden lg:block">
+                <div class="bg-white/5 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/10 relative">
+                    <div class="absolute -top-6 -right-6 bg-yellow-500 text-slate-900 px-6 py-4 rounded-2xl font-black rotate-12 shadow-xl shadow-yellow-500/20">
+                        FAST 1HR<br/>RESPONSE
+                    </div>
+                    <h3 class="text-white text-2xl font-bold mb-8 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="text-blue-400"></i> Professional Guarantee
+                    </h3>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4 group">
+                            <div class="bg-blue-600/20 text-blue-400 p-3 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold">24/7 Emergency Dispatch</p>
+                                <p class="text-slate-400 text-sm">We never sleep, so you can.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 group">
+                            <div class="bg-blue-600/20 text-blue-400 p-3 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <i data-lucide="award" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold">Fair, Upfront Pricing</p>
+                                <p class="text-slate-400 text-sm">No hidden fees, no surprises.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 group">
+                            <div class="bg-blue-600/20 text-blue-400 p-3 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold">Local Master Technician</p>
+                                <p class="text-slate-400 text-sm">Deer Park's most trusted pro.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Ribbon -->
+    <div class="bg-white py-6 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
+           <div class="flex items-center gap-2 font-black text-slate-400 text-xl italic tracking-tighter"><i data-lucide="shield-check"></i> GOOGLE GUARANTEED</div>
+           <div class="flex items-center gap-2 font-black text-slate-400 text-xl italic tracking-tighter"><i data-lucide="award"></i> TOP RATED 2024</div>
+           <div class="flex items-center gap-2 font-black text-slate-400 text-xl italic tracking-tighter"><i data-lucide="users"></i> 1000+ JOBS DONE</div>
+           <div class="flex items-center gap-2 font-black text-slate-400 text-xl italic tracking-tighter"><i data-lucide="map-pin"></i> DEER PARK NATIVE</div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section id="services" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-blue-600 font-black tracking-widest text-xs uppercase mb-3">Expert Solutions</h2>
+                    <h3 class="text-4xl md:text-6xl font-black text-slate-900 leading-tight">Professional Services <br/> For Every Problem.</h3>
+                </div>
+                <p class="text-lg text-slate-500 max-w-sm">
+                    We combine old-school craftsmanship with modern technology to fix your plumbing right the first time.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Cards -->
+                <div class="group p-8 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
+                    <div class="bg-red-50 text-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="alert-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Emergency Repairs</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Available 24/7 for bursts, leaks, and backups.</p>
+                    <a href="tel:8324293801" class="inline-flex items-center gap-2 font-bold text-blue-600 hover:text-blue-700">Book Service <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
+                    <div class="bg-blue-50 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="droplets" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Leak Detection</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Non-invasive tech to find the source fast.</p>
+                    <a href="tel:8324293801" class="inline-flex items-center gap-2 font-bold text-blue-600 hover:text-blue-700">Book Service <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
+                    <div class="bg-orange-50 text-orange-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="thermometer" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Water Heaters</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Service & install for all major brands.</p>
+                    <a href="tel:8324293801" class="inline-flex items-center gap-2 font-bold text-blue-600 hover:text-blue-700">Book Service <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
+                    <div class="bg-purple-50 text-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="settings" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Toilet Solutions</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Repairs, unblocking, and new installs.</p>
+                    <a href="tel:8324293801" class="inline-flex items-center gap-2 font-bold text-blue-600 hover:text-blue-700">Book Service <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
+                    <div class="bg-emerald-50 text-emerald-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="wrench" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Pipe Maintenance</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Relining, descaling, and full replacements.</p>
+                    <a href="tel:8324293801" class="inline-flex items-center gap-2 font-bold text-blue-600 hover:text-blue-700">Book Service <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
+                    <div class="bg-slate-50 text-slate-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Whole-Home Checks</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Ensure your plumbing is in peak condition.</p>
+                    <a href="tel:8324293801" class="inline-flex items-center gap-2 font-bold text-blue-600 hover:text-blue-700">Book Service <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section id="why-us" class="py-24 bg-slate-900 text-white skewed-divider relative">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="order-2 lg:order-1 relative">
+                   <img src="https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&q=80&w=800" alt="Technician" class="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center animate-pulse-blue">
+                      <i data-lucide="phone" class="w-8 h-8 fill-current text-white"></i>
+                   </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-blue-500 font-black tracking-widest text-xs uppercase mb-4">Why Absolute?</h2>
+                    <h3 class="text-4xl md:text-6xl font-black mb-10 leading-tight">Plumbing Built on <span class="text-blue-500">Integrity</span>.</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-6 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">No Dispatch Fees</h4>
+                                <p class="text-slate-400 leading-relaxed">We believe you shouldn't pay just for us to show up. Honest assessments only.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Deer Park Locals</h4>
+                                <p class="text-slate-400 leading-relaxed">We live where we work. Our reputation in the neighborhood is everything.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Master Technicians</h4>
+                                <p class="text-slate-400 leading-relaxed">We don't send 'handymen'. You get a fully qualified professional every time.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="tel:8324293801" class="mt-12 inline-block bg-white text-slate-900 px-10 py-5 rounded-2xl font-black text-xl hover:bg-blue-50 transition-all shadow-xl">
+                       Speak With A Tech
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-blue-600 font-black tracking-widest text-xs uppercase mb-3">Common Questions</h2>
+                <h3 class="text-4xl font-black text-slate-900">Got Questions? <br/> We've Got Answers.</h3>
+            </div>
+            <div class="space-y-4">
+                <!-- FAQ Items -->
+                <div class="faq-item active rounded-3xl border border-blue-200 bg-blue-50/30 transition-all duration-300">
+                    <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center group">
+                        <span class="font-extrabold text-lg text-blue-900">How fast is your response time?</span>
+                        <div class="chevron p-2 rounded-full transition-all bg-blue-600 text-white rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content overflow-hidden px-8 pb-8 text-slate-600 leading-relaxed font-medium" style="max-height: 200px;">
+                        For emergencies in Deer Park, we typically arrive within 45-90 minutes depending on technician availability.
+                    </div>
+                </div>
+                <div class="faq-item rounded-3xl border border-slate-100 bg-white transition-all duration-300">
+                    <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center group">
+                        <span class="font-extrabold text-lg text-slate-700 group-hover:text-blue-600">Do you provide written estimates?</span>
+                        <div class="chevron p-2 rounded-full transition-all bg-slate-100 text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-600 leading-relaxed font-medium">
+                        Always. We never start a job without a clear, written price breakdown that you've approved.
+                    </div>
+                </div>
+                <div class="faq-item rounded-3xl border border-slate-100 bg-white transition-all duration-300">
+                    <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center group">
+                        <span class="font-extrabold text-lg text-slate-700 group-hover:text-blue-600">Are you available on weekends?</span>
+                        <div class="chevron p-2 rounded-full transition-all bg-slate-100 text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-600 leading-relaxed font-medium">
+                        Yes, we are on call 24/7 for emergencies. We know plumbing disasters don't wait for business hours.
+                    </div>
+                </div>
+                <div class="faq-item rounded-3xl border border-slate-100 bg-white transition-all duration-300">
+                    <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center group">
+                        <span class="font-extrabold text-lg text-slate-700 group-hover:text-blue-600">Do you handle commercial plumbing?</span>
+                        <div class="chevron p-2 rounded-full transition-all bg-slate-100 text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-600 leading-relaxed font-medium">
+                        While we specialize in residential work, we do handle small to medium commercial service calls in the Deer Park area.
+                    </div>
+                </div>
+                <div class="faq-item rounded-3xl border border-slate-100 bg-white transition-all duration-300">
+                    <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center group">
+                        <span class="font-extrabold text-lg text-slate-700 group-hover:text-blue-600">Is your work guaranteed?</span>
+                        <div class="chevron p-2 rounded-full transition-all bg-slate-100 text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content px-8 pb-8 text-slate-600 leading-relaxed font-medium">
+                        Every job comes with our Absolute Guarantee. If it's not fixed right, we make it right—no questions asked.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 bg-blue-600 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-7xl font-black text-white mb-8 tracking-tighter">Save Your Home From <br/> Water Damage.</h2>
+            <p class="text-xl text-blue-100 mb-12 max-w-xl mx-auto font-bold opacity-90">
+                Stop the leak. Clear the drain. Repair the heater. <br/> One call handles it all.
+            </p>
+            <a href="tel:8324293801" class="inline-flex items-center gap-6 bg-white text-blue-600 text-3xl md:text-5xl font-black px-12 py-8 rounded-[2rem] shadow-2xl hover:bg-blue-50 transform hover:scale-105 active:scale-95 transition-all">
+                <i data-lucide="phone" class="w-12 h-12 fill-current"></i> (832) 429-3801
+            </a>
+            <div class="mt-12 flex flex-wrap justify-center gap-8 text-white/80 font-black uppercase text-xs tracking-widest">
+               <div class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> Available Now</div>
+               <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Fully Licensed</div>
+               <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i> Absolute Guarantee</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-4 gap-16 mb-16">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="bg-blue-600 p-2 rounded-xl">
+                            <i data-lucide="wrench" class="text-white w-5 h-5"></i>
+                        </div>
+                        <span class="font-extrabold text-2xl text-white tracking-tighter">
+                            ABSOLUTE <span class="text-blue-500">PLUMBING</span>
+                        </span>
+                    </div>
+                    <p class="text-lg leading-relaxed max-w-md mb-8">
+                        Providing expert plumbing repairs and maintenance to Deer Park, TX families. We pride ourselves on transparent communication and superior results.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer text-white">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer text-white">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer text-white">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-black uppercase tracking-widest text-xs mb-8">Contact</h4>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <i data-lucide="map-pin" class="text-blue-500 flex-shrink-0 w-5 h-5"></i>
+                            <span class="text-sm">200 E San Augustine St #247, Deer Park, TX 77536</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="phone" class="text-blue-500 w-5 h-5"></i>
+                            <a href="tel:8324293801" class="text-white font-bold hover:text-blue-400 transition-colors">(832) 429-3801</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-black uppercase tracking-widest text-xs mb-8">Service Hours</h4>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
+                       <div class="flex justify-between text-sm mb-2">
+                          <span class="text-white font-bold">Emergency</span>
+                          <span class="text-blue-400 font-black">24/7</span>
+                       </div>
+                       <div class="flex justify-between text-sm">
+                          <span>Office Hours</span>
+                          <span>8am - 5pm</span>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 text-xs font-bold uppercase tracking-widest flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+                <p>© <span id="current-year"></span> Absolute Plumbing Services. Deer Park's Elite Plumber.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Action Tray -->
+    <div class="fixed bottom-6 left-6 right-6 z-[60] md:hidden">
+        <a href="tel:8324293801" class="w-full bg-red-600 text-white flex items-center justify-between px-8 py-5 rounded-[2rem] shadow-2xl shadow-red-600/40 font-black text-xl animate-pulse-red">
+            <div class="flex items-center gap-3">
+                <i data-lucide="phone" class="w-6 h-6 fill-current"></i>
+                <span>TAP TO CALL</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-6 h-6 opacity-50"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Logic
+        const navbar = document.getElementById('navbar');
+        const logoText = document.getElementById('logo-text');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.remove('bg-transparent', 'py-6');
+                navbar.classList.add('glass-effect', 'shadow-lg', 'py-2', 'translate-y-2', 'mx-4', 'rounded-2xl', 'border', 'border-white/50');
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-slate-900');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white/80');
+                    link.classList.add('text-slate-600');
+                });
+            } else {
+                navbar.classList.add('bg-transparent', 'py-6');
+                navbar.classList.remove('glass-effect', 'shadow-lg', 'py-2', 'translate-y-2', 'mx-4', 'rounded-2xl', 'border', 'border-white/50');
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-slate-900');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white/80');
+                    link.classList.remove('text-slate-600');
+                });
+            }
+        });
+
+        // FAQ Accordion Logic
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const item = toggle.parentElement;
+                const content = item.querySelector('.faq-content');
+                const chevron = item.querySelector('.chevron');
+                const isActive = item.classList.contains('active');
+
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active', 'bg-blue-50/30', 'border-blue-200');
+                        otherItem.classList.add('bg-white', 'border-slate-100');
+                        const otherContent = otherItem.querySelector('.faq-content');
+                        const otherChevron = otherItem.querySelector('.chevron');
+                        const otherSpan = otherItem.querySelector('span');
+                        
+                        otherContent.style.maxHeight = '0px';
+                        otherChevron.classList.remove('bg-blue-600', 'text-white', 'rotate-180');
+                        otherChevron.classList.add('bg-slate-100', 'text-slate-400');
+                        otherSpan.classList.remove('text-blue-900');
+                        otherSpan.classList.add('text-slate-700');
+                    }
+                });
+
+                // Toggle Current Item
+                if (!isActive) {
+                    item.classList.add('active', 'bg-blue-50/30', 'border-blue-200');
+                    item.classList.remove('bg-white', 'border-slate-100');
+                    content.style.maxHeight = '200px';
+                    chevron.classList.add('bg-blue-600', 'text-white', 'rotate-180');
+                    chevron.classList.remove('bg-slate-100', 'text-slate-400');
+                    toggle.querySelector('span').classList.add('text-blue-900');
+                    toggle.querySelector('span').classList.remove('text-slate-700');
+                } else {
+                    item.classList.remove('active', 'bg-blue-50/30', 'border-blue-200');
+                    item.classList.add('bg-white', 'border-slate-100');
+                    content.style.maxHeight = '0px';
+                    chevron.classList.remove('bg-blue-600', 'text-white', 'rotate-180');
+                    chevron.classList.add('bg-slate-100', 'text-slate-400');
+                    toggle.querySelector('span').classList.remove('text-blue-900');
+                    toggle.querySelector('span').classList.add('text-slate-700');
+                }
+            });
+        });
+
+        // Set Current Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
